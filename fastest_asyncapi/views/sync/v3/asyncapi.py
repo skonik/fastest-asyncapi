@@ -9,13 +9,13 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 
 
-class FastAPIAsyncapiApp(FastAPI):
+class FastestAsyncAPIApp(FastAPI):
 
     def configure(self, asyncapi_spec_classes: list[Type[SimpleSpecV3]]) -> None:
         self.asyncapi_spec_classes = asyncapi_spec_classes
 
 
-fastapi_asyncapi_app = FastAPIAsyncapiApp()
+fastest_asyncapi_app = FastestAsyncAPIApp()
 
 path_to_current_file = Path(__file__)
 fastapi_asyncapi_dir = path_to_current_file.parent.parent.parent.parent
@@ -24,11 +24,11 @@ asyncapi_v3_template_path = fastapi_asyncapi_dir.joinpath("templates").joinpath(
 asyncapi_v3_templates = Jinja2Templates(directory=asyncapi_v3_template_path)
 
 
-@fastapi_asyncapi_app.get("/asyncapi/v3/")
+@fastest_asyncapi_app.get("/asyncapi/v3/")
 def asyncapi_v3_docs(
         request: Request,
 ) -> HTMLResponse:
-    spec_containers = retrieve_asyncapi_spec_containers(fastapi_asyncapi_app.asyncapi_spec_classes)
+    spec_containers = retrieve_asyncapi_spec_containers(fastest_asyncapi_app.asyncapi_spec_classes)
 
     asyncapi_generator = AsyncAPISpecV3Generator(
         asyncapi_spec_container=retrieve_merged_asyncapi_container(
