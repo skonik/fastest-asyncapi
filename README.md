@@ -51,7 +51,7 @@ class MySpecialServiceAsyncAPISpecV3(SimpleSpecV3):
     receives: RoutingMap = {}
 ```
 
-2. Configure f`astapi-asyncapi` app using asyncapi spec definition from above Mount `fastapi-asyncapi` urls.
+2. Configure `fastapi-asyncapi` app using asyncapi spec definition from above Mount `fastapi-asyncapi` urls.
 
 ```python
 
